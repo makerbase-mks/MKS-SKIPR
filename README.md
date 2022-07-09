@@ -53,17 +53,13 @@ Insert the USB WiFi adapter to one of the 3 usb ports of MKS SKIPR, you have two
 - Remove the TF card from the PC, and insert it to the MKS SKIPR
 It would connect to your router automatically.
 #### Through the serial software(we using Putty to describe below) 
-- Prepare putty according to the [steps](https://github.com/makerbase-mks/MKS-SKIPR#using-serial-software-on-pcwe-using-putty-to-describe-below)
+- Prepare putty according to the [steps](https://github.com/makerbase-mks/MKS-SKIPR/blob/main/README.md#using-serial-software-on-pcwe-using-putty-to-describe-below)
 - On the shell, use the command of "armbian-config" to enter config tool, then choose "network" -> "WIFI” to choose the hotpot to connect to the network. 
-- Select “Activate a connection”, select the wifi and enter the password to connect.  
-![EEEEEE](https://user-images.githubusercontent.com/12979070/175969814-e96acf80-4c83-4bf0-917d-ebe44bbefaed.png)
-
-![RRRR](https://user-images.githubusercontent.com/12979070/175969838-b8a985ac-b01b-4332-9802-8ad72ae3427d.png)  
 
 ### Get the IP of MKS SKIPR
 After connect MKS SKIPR to the network, you can get its IP address in two ways
 #### From the Serial software on PC
-Enter the command “ip a” and view the IP
+Enter the command “sudo ifconfig” and view the IP
 #### From KlipperScreen 
 If you have a PI-TS35 or HDMI screen connected with MKS SKIPR, it would run KlipperScreen after system boot. You can find your IP address on the "Config"->WiFi
 
