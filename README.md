@@ -19,9 +19,9 @@ MKS SKIPR is an all-in-one board launched by Makerbase for running Klipper. It i
 ![SKIRP_SIZE](https://user-images.githubusercontent.com/12979070/178107643-b869bb41-792e-414e-b75f-68d809c23297.png)
 
 ## Download and install system images
-Makerbase provides a complete Klipper firmware transplanted based on the Armbian desktop system, and directly supports klipperScreen. Users only need to download the image file provided by Makerbase, burn it to the TF card, without a lot of construction work(If you have purchased a package that includes a TF card, the TF card has already been burned into the system before leaving the factory, and you do not need to burn it again unless you want to update a new image.).   
+Makerbase provides a complete Klipper firmware transplanted based on the Armbian desktop system, and directly supports klipperScreen. Users only need to download the image file provided by Makerbase, burn it to the EMMC module or TF card, without a lot of construction work(If you have purchased a package that includes an EMMC module, the EMMC module has already been burned into the system before leaving the factory, and you do not need to burn it again unless you want to update a new image.).   
 ### Hardware Preparation
-- A TF memory card not less than 8G
+- An EMMC module or A TF memory card not less than 8G
 - TF card reader
 - PC with windows operating system installed
 - Wireless network card or network cable
@@ -32,14 +32,13 @@ Makerbase provides a complete Klipper firmware transplanted based on the Armbian
 [https://www.balena.io/etcher/](https://www.balena.io/etcher/) 
 - Install putty, download link: [https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
  
-### Flash system files
-1. Format TF card  
-Format TF card to FAT32 format before flash system files  
-2. Insert the TF card into the card reader, and insert the card reader into the PC  
+### Flash system files  
+1. Insert the MKS EMMC module(need an EMMC adapter) or TF card into the card reader, and insert the card reader into the PC  
+2. Format EMMC module or TF card to FAT32 format before flash system files  
 3. Unzip the downloaded image file  
 4. Run balenaEtcher, import the decompressed image file->Select TF card->Click to start flash  
 ![ddd](https://user-images.githubusercontent.com/12979070/175958595-3052068e-e06e-415a-b01d-b50fd21de4a4.png)  
-5. After the flashing is finish, insert the TF card into the MKS SKIPR and power on with DC12/24V  
+5. After the flashing is finish, insert the MKS EMMC module to the EMMC interface of MKS SKIPR or insert the TF card into the MKS SKIPR's host TF slot, then power on MKS SKIPR board
 
 ## MKS SKIPR network connection
 ### Using the Ethernet  
@@ -54,8 +53,8 @@ Insert the USB WiFi adapter to one of the 3 usb ports of MKS SKIPR, you have two
 - Remove the TF card from the PC, and insert it to the MKS SKIPR
 It would connect to your router automatically.
 #### Through the serial software(we using Putty to describe below) 
-- Prepare putty according to the [steps](https://github.com/makerbase-mks/MKS-PI#using-serial-software-on-pcwe-using-putty-to-describe-below)
-- Enter the command “nmtui” to connect to the network. 
+- Prepare putty according to the [steps](https://github.com/makerbase-mks/MKS-SKIPR#using-serial-software-on-pcwe-using-putty-to-describe-below)
+- On the shell, use the command of "armbian-config" to enter config tool, then choose "network" -> "WIFI” to choose the hotpot to connect to the network. 
 - Select “Activate a connection”, select the wifi and enter the password to connect.  
 ![EEEEEE](https://user-images.githubusercontent.com/12979070/175969814-e96acf80-4c83-4bf0-917d-ebe44bbefaed.png)
 
@@ -66,7 +65,7 @@ After connect MKS SKIPR to the network, you can get its IP address in two ways
 #### From the Serial software on PC
 Enter the command “ip a” and view the IP
 #### From KlipperScreen 
-If you have a PI-LCD or HDMI screen connected with MKS SKIPR, it would run KlipperScreen after system boot. You can find your IP address on the "Config"->WiFi
+If you have a PI-TS35 or HDMI screen connected with MKS SKIPR, it would run KlipperScreen after system boot. You can find your IP address on the "Config"->WiFi
 
 ## Enter Fluidd interface
 After connect the MKS SKIPR to the network, you can directly enter the IP address of MKS SKIPR with your PC's browser, and you can enter fluidd interface(Makerbase's image has installed fluidd, of cause you can install other interface).  
@@ -87,19 +86,9 @@ Putty is a famous tool, you can use either SSH or Serial to connect to the MKS S
    > their origin passwords are the same: makerbase  
 - After enter the user and password, you can enter the system now.
 
-## Connection MKS SKIPR with motherboard
-You can use 3 USB ports and a uart to connect MKS SKIPR and your motherboard.  
-### USB connection
-Most 3D printing motherboards have a USB port converted from the serial port. Use a usb cable to connect it to one of the three B-type USB ports of the MKS SKIPR.  
-Find the device name of the USB port, login MKS SKIPR from Putty or other serial software and type:   
-`ls /dev/serial/by-id/*`  
-It will display the name like below(confirm your USB connection is ok):  
-`/dev/serial/by-id/usb-Klipper_stm32f407xx_4D0045001850314335393520-if00`      
-Copy the device name to the "[mcu]" segment on "printer.cfg" file of Klipper :   
-`[mcu]  
-  serial:/dev/serial/by-id/usb-Klipper_stm32f407xx_4D0045001850314335393520-if00`    
-### UART connection
-You can also use the uart0 on MKS SKIPR to connect your motherboard(Make sure your motherboard has the uart pins lead out).      
+## Config MKS SKIPR's serial parameter on Klipper
+
+On MKS SKIPR, the RK3328 SOC uses the /dev/ttyS0 to connect to the UART1 of STM32F407VET MCU.      
 On the "printer.cfg" file of Klipper, the serial should be "/dev/ttyS0":   
 `[mcu]  
   serial:/dev/ttyS0`  
