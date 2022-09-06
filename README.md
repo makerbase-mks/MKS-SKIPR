@@ -12,6 +12,9 @@ MKS SKIPR is an all-in-one board launched by Makerbase for running Klipper. It i
 - Design the back EMF energy absorption circuit to protect the stepper driver module
 - The Z+ interface can independently set the voltage selection to adapt to different models of PROBE
 
+# WIKI
+ [https://github.com/makerbase-mks/MKS-SKIPR/wiki](https://github.com/makerbase-mks/MKS-SKIPR/wiki)
+ 
 # Wiring Diagram  
 ![SKIPR_WIRE](https://user-images.githubusercontent.com/12979070/178107495-4db4d498-1cf7-4b6d-9fc6-dbe52603db1b.png)  
 
@@ -135,3 +138,5 @@ shaper_freq_y = 37.5`
 The default image of MKS SKIPR has already installed MJPG-Streamer and enable the USB camera. MKS SKIPR supports most of the commonly used USB cameras(but not guaranteed). Normally, just connect your USB camera to one of B-Type USB port on MKS SKIPR, you will see the preview video on the Fluidd interface.   
 If you don't want to use the USB camera, you had better to disable it to reduce CPU load:  
 Enter the setting item on the Fluidd interface -> camera -> default -> disable
+
+# More information Please refer to [MKS SKIPR WIKI](https://github.com/makerbase-mks/MKS-SKIPR/wiki)
