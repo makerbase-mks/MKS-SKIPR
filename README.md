@@ -139,4 +139,8 @@ The default image of MKS SKIPR has already installed MJPG-Streamer and enable th
 If you don't want to use the USB camera, you had better to disable it to reduce CPU load:  
 Enter the setting item on the Fluidd interface -> camera -> default -> disable
 
+## Use with the tool header modules
+Support using SKIPR with the tool header modules like MKS THR36/42, more details refer to : https://github.com/makerbase-mks/MKS-THR36-THR42-UTC
+
+
 # More information Please refer to [MKS SKIPR WIKI](https://github.com/makerbase-mks/MKS-SKIPR/wiki)
