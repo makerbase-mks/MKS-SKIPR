@@ -142,5 +142,10 @@ Enter the setting item on the Fluidd interface -> camera -> default -> disable
 ## Use with the tool header modules
 Support using SKIPR with the tool header modules like MKS THR36/42, more details refer to : https://github.com/makerbase-mks/MKS-THR36-THR42-UTC
 
+# How to modify the device tree file
+Refer to https://github.com/makerbase-mks/MKS-PI/blob/main/README.md#how-to-modify-the-device-tree-file
+
+# How to rotate 180° for the TS35 display
+Refer to https://github.com/makerbase-mks/MKS-PI/blob/main/README.md#how-to-rotate-180-for-the-ts35-display
 
 # More information Please refer to [MKS SKIPR WIKI](https://github.com/makerbase-mks/MKS-SKIPR/wiki)
